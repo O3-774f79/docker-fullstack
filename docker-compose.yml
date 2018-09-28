@@ -1,0 +1,18 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+     - "80:80" 
+  web1:
+    depends_on:
+      - frontend
+    build: ./sub
+    ports:
+     - "4000:4000"
+  web2: 
+    depends_on:
+      - web1
+    build: ./sub2
+    ports:
+     - "4001:4001"
